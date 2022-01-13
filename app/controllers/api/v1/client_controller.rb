@@ -1,7 +1,6 @@
-module Api
- module V1
-    class ClientController < Api::ApplicationController
-        def index
+    class Api::V1::ClientController  <  Api::ApplicationController
+
+      def index
             client_all = Client.all
             render json: client_all
         end 
@@ -33,7 +32,6 @@ module Api
             end  
         end
 
-
        private
 
        def client_params
@@ -41,5 +39,3 @@ module Api
        end
    
     end 
-  end
-end

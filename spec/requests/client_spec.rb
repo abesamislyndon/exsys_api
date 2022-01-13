@@ -4,6 +4,8 @@ RSpec.describe "Clients", type: :request do
    
    before  do
       @client = FactoryBot.create(:client_list) 
+      user = FactoryBot.create(:user)
+      allow(controller).to receive(:authenticate_user!).and_return(true)
    end
 
    context " CRUD Status for Client" do
