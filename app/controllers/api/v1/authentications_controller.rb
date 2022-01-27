@@ -15,6 +15,7 @@ class Api::V1::AuthenticationsController < Api::ApplicationController
     return nil unless user and user.id
     {
         auth_token: JsonWebToken.encode({user_id: user.id}),
+        auth_status: "authenticated",
         user: {
             id: user.id,  username: user.username, name: user.email.split('@')[0].try(:titleize)
         }

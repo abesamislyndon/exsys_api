@@ -10,11 +10,10 @@ RSpec.describe "Clients", type: :request do
    def authenticated_header(user)
       token = JsonWebToken.encode({user_id: @user.id})
       { 'Authorization': "Bearer #{token}" }
-    end
-
-  
+   end
 
    context " CRUD Status for Client" do
+
       it "response status" do
          get '/api/v1/client'
          expect(JSON.parse(response.body).size).to eq(1)
@@ -25,6 +24,13 @@ RSpec.describe "Clients", type: :request do
          post '/api/v1/client', :params => {:client=>{ client_name:'gily'}}, :headers =>  authenticated_header(@user)
          expect(response).to have_http_status(201)
       end
+
+      it 'returns unauthorized for post method' do
+         headers = { 'ACCEPT'=>'application/json'}
+         post '/api/v1/client', :params => {:client=>{ client_name:'gily'}}, :headers =>  headers
+         expect(response).to have_http_status(401)
+      end
+
 
       it 'updates a client' do
          @client_new = Faker::Name.name

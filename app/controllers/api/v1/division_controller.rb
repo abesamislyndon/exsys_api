@@ -1,6 +1,8 @@
 module Api
     module V1
         class DivisionController < Api::ApplicationController
+            before_action :authenticate_request!
+
             def index  
                 @division = Division.all
                  render json: @division

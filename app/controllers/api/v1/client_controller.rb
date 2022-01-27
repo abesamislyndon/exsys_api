@@ -1,8 +1,10 @@
     class Api::V1::ClientController  <  Api::ApplicationController
 
+     #before_action :authenticate_request!
+
       def index
-            client_all = Client.all
-            render json: client_all
+            @client_all = Client.all
+            render json: @client_all
         end 
 
         def new
@@ -11,7 +13,10 @@
 
         def create
           @client = Client.create(client_params)
-          render json: @client, status: 201 if @client.save!
+          if @client.save
+            render json: @client, status: 201 
+          end
+          
         end
 
         def edit
