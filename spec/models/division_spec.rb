@@ -12,4 +12,7 @@ context "associations" do
    it { should have_many(:clients)}
 end
 
+#context "accepts nested attribute" do
+#   it { should accept_nested_attributes_for :clients}
+#end
 end

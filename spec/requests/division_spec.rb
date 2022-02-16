@@ -48,7 +48,7 @@ describe "STATUS for CRUD" do
         expect(response.status).to eq(204)
     end
 
-    it 'returns status after show divisionn' do
+    it 'returns status after show division' do
         headers = {'ACCEPT' => 'applicaiton/json'}
         get "/api/v1/division/#{@divisions_list.id}",
         :headers => authenticated_header(@user)

@@ -37,6 +37,10 @@ module Api
                 render json: @division_delete, status: 204
             end
 
+            def divbelong
+                @selectClient = Division.client_division(params[:id])
+                render json: @selectClient
+            end
 
             private
 

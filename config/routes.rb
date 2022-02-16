@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       post 'auth_user', to: 'authentications#authenticate_user'
       resources :client
       resources :division
-     end
+      get "/divbelong/:id", to: "division#divbelong"
+      resources :jobinfo
+    end
   end  
 
 
