@@ -20,7 +20,15 @@ module Api
         private
 
         def params_jobinfo
-            params.require(:jobinfo).permit(:client_name, :division_name, :block, :address, :natureofcomplain, :dateEntry)
+            params.require(:jobinfo).permit(:client_name, 
+                                            :division_name, 
+                                            :block, 
+                                            :address, 
+                                            :natureofcomplain, 
+                                            :dateEntry, 
+                                            defect_details_attributes: [:id, :jobinfo_id, :defects, :recommendation,:_destroy],
+                                            partsreplace_attributes: [:id, :jobinfo_id, :item, :sorcode, :rates, :quantity, :subtotal,:_destroy]
+                                        )
         end
 
         end
