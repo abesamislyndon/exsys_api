@@ -4,7 +4,9 @@ module Api
          
             before_action :authenticate_request!
         
-        def index            
+        def index       
+            @alljobinfo = Jobinfo.all 
+            render json: @alljobinfo, status: 201    
         end
 
         def new

@@ -29,5 +29,4 @@ RSpec.describe Partsreplace, type: :model do
           expect(Partsreplace.find_by_jobinfo_id(12)).to eq(nil)
       end
     end
-
 end

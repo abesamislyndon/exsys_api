@@ -15,7 +15,7 @@ end
 context "CRUD process" do
     it "response status" do
         get '/api/v1/jobinfo'
-        expect(JSON.parse(response.body).size).to eq(1)
+        expect(JSON.parse(response.body).size).to have_http_status(204)
      end  
      
      it 'returns status after creating jobinfo' do
