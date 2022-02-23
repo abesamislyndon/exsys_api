@@ -8,7 +8,7 @@ RSpec.describe DefectDetail, type: :model do
 
 
   context "validations" do
-     [:jobinfo_id, :defects,:recommendation].each do |defects_recommendation|
+     [ :defects,:recommendation].each do |defects_recommendation|
         it { should validate_presence_of(defects_recommendation)}
      end
   end

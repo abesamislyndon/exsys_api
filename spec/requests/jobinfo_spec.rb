@@ -14,8 +14,9 @@ end
 
 context "CRUD process" do
     it "response status" do
-        get '/api/v1/jobinfo'
-        expect(JSON.parse(response.body).size).to have_http_status(204)
+        headers = { 'ACCEPT'=>'application/json'}
+        get '/api/v1/jobinfo' , :headers =>  authenticated_header(@user)
+        expect(response).to have_http_status(201)
      end  
      
      it 'returns status after creating jobinfo' do

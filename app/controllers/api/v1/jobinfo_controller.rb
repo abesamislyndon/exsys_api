@@ -29,7 +29,7 @@ module Api
                                             :natureofcomplain, 
                                             :dateEntry, 
                                             defect_details_attributes: [:id, :jobinfo_id, :defects, :recommendation,:_destroy],
-                                            partsreplace_attributes: [:id, :jobinfo_id, :item, :sorcode, :rates, :quantity, :subtotal,:_destroy]
+                                            partsreplaces_attributes: [:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
                                         )
         end
 

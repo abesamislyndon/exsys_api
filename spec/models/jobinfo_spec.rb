@@ -35,7 +35,7 @@ RSpec.describe Jobinfo, type: :model do
   end
 
   context "nested attributes parts details" do
-    it {should accept_nested_attributes_for(:partsreplace)}
+    it {should accept_nested_attributes_for(:partsreplaces)}
  end
 
  

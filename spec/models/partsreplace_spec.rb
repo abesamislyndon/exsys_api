@@ -7,14 +7,16 @@ RSpec.describe Partsreplace, type: :model do
   end
 
   context "validates" do
-    [:jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal].each do |parts|
+    [:sorcode, :quantity, :item, :rates, :subtotal].each do |parts|
        it { should validate_presence_of(parts)}
     end
   end
 
   context "CRUD" do
       it "can be created parts replace" do
+      #  [ :sorcode, :quantity, :item, :rates, :subtotal].each do |parts|
           expect(@partsreplace).to be_valid
+     #   end
       end
 
       it "can be updated parts replace" do
