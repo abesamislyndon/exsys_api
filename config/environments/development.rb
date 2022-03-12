@@ -45,5 +45,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # Store files locally.
+  config.active_storage.service = :local
+
+  config.action_view.embed_authenticity_token_in_remote_forms = true
+
 
 end

@@ -3,9 +3,10 @@ module Api
         class JobinfoController < Api::ApplicationController
          
             before_action :authenticate_request!
+            
         
         def index       
-            @alljobinfo = Jobinfo.all 
+            @alljobinfo = Jobinfo.all
             render json: @alljobinfo, status: 201    
         end
 
@@ -17,8 +18,20 @@ module Api
             @jobinfo = Jobinfo.create(params_jobinfo)
             render json: @jobinfo, status: 201 if @jobinfo.save!
         end
+
         
-        
+        def update
+            @jobinfo = Jobinfo.update(params_jobinfo)
+            render json: @jobinfo, status: 201 if @jobinfo.save!
+        end
+
+    
+
+        def total_amount 
+            @total_amount = Jobinfo.total_amount
+            render json: @total_amount, status: 200
+        end
+
         private
 
         def params_jobinfo
@@ -28,10 +41,18 @@ module Api
                                             :address, 
                                             :natureofcomplain, 
                                             :dateEntry, 
-                                            defect_details_attributes: [:id, :jobinfo_id, :defects, :recommendation,:_destroy],
+                                            :gtotal,
+                                            :defect_details_attributes => 
+                                                    [:id, 
+                                                     :jobinfo_id, 
+                                                     :defects, 
+                                                     :recommendation, 
+                                                     :photo],
                                             partsreplaces_attributes: [:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
-                                        )
+            )
         end
+
+        
 
         end
     end

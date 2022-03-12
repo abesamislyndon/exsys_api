@@ -28,9 +28,5 @@ end
          expect(Client.find_by(client_name: 'dondon')).to be_nil
       end
 
-    
-
-
-
    end
 end

@@ -9,8 +9,11 @@ Rails.application.routes.draw do
       resources :division
       get "/divbelong/:id", to: "division#divbelong"
       resources :jobinfo
+      get "totalamount", to: "jobinfo#total_amount"
     end
   end  
+
+
 
 
 

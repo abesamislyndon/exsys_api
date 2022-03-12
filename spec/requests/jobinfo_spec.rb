@@ -28,7 +28,8 @@ context "CRUD process" do
                          division_name: "CDO",
                           block: "12", 
                           address:"balulang",
-                          natureofcomplain: "ok na unta"
+                          natureofcomplain: "ok na unta",
+                          gtotal: "12.23"
                           }} , :headers =>  authenticated_header(@user)
         expect(response).to have_http_status(201)
      end

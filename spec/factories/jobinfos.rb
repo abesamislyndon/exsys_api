@@ -6,5 +6,6 @@ FactoryBot.define do
     dateEntry { "MyString" }
     natureofcomplain { "MyString" }
     address {"sample"}
+    gtotal { "9.99"}
   end
 end
