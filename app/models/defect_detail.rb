@@ -10,7 +10,7 @@ class DefectDetail < ApplicationRecord
   
       object.photo.blob.attributes
             .slice('filename', 'byte_size')
-            .merge(url: image_url)
+            .merge(url: photo_url)
             .tap { |attrs| attrs['name'] = attrs.delete('filename') }
     end
   

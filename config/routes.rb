@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "/divbelong/:id", to: "division#divbelong"
       resources :jobinfo
       get "totalamount", to: "jobinfo#total_amount"
+         resources :direct_uploads, only: [:create, :direct_upload_json]
     end
   end  
 

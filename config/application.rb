@@ -13,7 +13,7 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -33,6 +33,5 @@ module ExsysApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.active_storage.replace_on_assign_to_many = false
   end
 end
