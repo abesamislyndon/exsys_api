@@ -12,7 +12,7 @@ gem 'responders'
 gem 'devise'
 gem 'jwt'
 gem 'rack-cors'
-gem 'activestorage'
+#gem 'activestorage'
 gem "image_processing", ">= 1.2"
 gem 'active_model_serializers'
 gem 'active_storage_base64'

@@ -1,3 +1,9 @@
 class DefectDetailsSerializer < ActiveModel::Serializer
-  attributes :id, :jobinfo_id, :defects, :recommendation, photos:[]
-end 
+  has_one_attached :photo
+  attributes :id , :defects, :recommendation, :photo
+
+  def photo
+    url_for(object.photo) if object.photo.attached?
+  end
+
+end

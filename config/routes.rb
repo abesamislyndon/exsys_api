@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       get "/divbelong/:id", to: "division#divbelong"
       resources :jobinfo
       get "totalamount", to: "jobinfo#total_amount"
-         resources :direct_uploads, only: [:create, :direct_upload_json]
+      resources :direct_uploads, only: [:create]
+      put '/rails/active_storage/disk/:encoded_token', to: 'upload#update'
     end
   end  
 
