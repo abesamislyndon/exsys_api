@@ -7,6 +7,17 @@ class JobinfoSerializer < ActiveModel::Serializer
               :natureofcomplain,
               :address,
               :gtotal,
+              :status,
               :defect_details,
               :partsreplaces
+
+        
+              def defects
+                ActiveModel::SerializableResource.new(object.defect_details,  each_serializer: DefectDetailSerializer)
+              end
+            
+
+
+
+
 end

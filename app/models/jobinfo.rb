@@ -1,6 +1,6 @@
 class Jobinfo < ApplicationRecord
   #has_many :items, primary_key: :id , foreign_key: 'item_id'
-  has_many :defect_details,  autosave: true , dependent: :destroy 
+  has_many :defect_details, dependent: :destroy 
   has_many :partsreplaces,   dependent: :destroy 
  # has_many :partsreplaces,   dependent: :destroy
   accepts_nested_attributes_for :defect_details, allow_destroy: true ,  reject_if: :all_blank
@@ -10,10 +10,14 @@ class Jobinfo < ApplicationRecord
 
 
 def self.total_amount
-  sql = "SELECT sum(gtotal) as total_amount ,  count(*) as total_outstanding from jobinfos"
+  sql = "SELECT sum(gtotal) as total_amount ,  count(*) as total_outstanding from jobinfos where status = 0"
   ActiveRecord::Base.connection.execute(sql)
 end
 
+def self.outstanding
+  sql = "SELECT * from jobinfos where status = 0"
+  ActiveRecord::Base.connection.execute(sql)
+end
 
 
 end

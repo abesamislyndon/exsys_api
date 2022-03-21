@@ -3,4 +3,4 @@
 end
 
 
-User.create(username: 'lyndon', email: 'abesamislyndon@gmail.com', password: 'dondon', password_confirmation: 'dondon', role: 1)
+dondon = User.create(username: 'dondon', email: 'abesamislyndon@gmail.com', password: 'dondon', password_confirmation: 'dondon', role: 1)

@@ -2,41 +2,35 @@ module Api
     module V1
         class JobinfoController < Api::ApplicationController
          
-            before_action :authenticate_request!
+        before_action :authenticate_request!
             
         
          def index       
-            @alljobinfo = Jobinfo.all
+            @alljobinfo = Jobinfo.outstanding
             render json: @alljobinfo, status: 201    
          end
 
 
          def show
-               @job = Jobinfo.find(params[:id]) 
-            if @job
-
-                render json: @job , status: 201 
-            end             
-         end
-
+            @job = Jobinfo.find(params[:id]) 
+            render json: @job , status: 201 
+        end
             def new
                 @jobinfo = Jobinfo.new
             end
 
             def create
-                @jobinfo = Jobinfo.create(params_jobinfo)
-                render json: @jobinfo, status: 201 if @jobinfo.save!
+                jobinfo = Jobinfo.create(params_jobinfo)
+                #render json: @jobinfo, status: 201 if @jobinfo.save!
+                
+
+                if jobinfo.save
+                    render json: jobinfo, status: 201
+                  else
+                    render json: jobinfo, status: :unprocessable_entity
+                  end
             end
 
-
-
-           # def update
-           #     @jobinfo = Jobinfo.update(params_jobinfo)
-            #    render json: @jobinfo, status: 201 if @jobinfo.save!
-            #end
-
-
-               # GET method for editing a product based on id
             def edit
                 @jobinfo = Jobinfo.find(params[:id])
             end
@@ -44,9 +38,9 @@ module Api
             # PUT method for updating in database a product based on id
             def update
                 @jobinfo = Jobinfo.find(params[:id])
-                  if @jobinfo.update_attributes!(params_jobinfo)
+                  if @jobinfo.update!(params_jobinfo) 
                     render json: @jobinfo, status: 201 
-                 end
+                 end                 
             end
 
             def total_amount 
@@ -64,6 +58,7 @@ module Api
                                                 :natureofcomplain, 
                                                 :dateEntry, 
                                                 :gtotal,
+                                                :status,
                                                 :defect_details_attributes => 
                                                         [:id, 
                                                         :jobinfo_id, 
