@@ -1,6 +1,7 @@
 class JobinfoSerializer < ActiveModel::Serializer
   attributes  :id , 
               :client_name,
+              :client_id,
               :division_name,
               :block, 
               :dateEntry, 

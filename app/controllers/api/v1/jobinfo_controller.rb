@@ -48,10 +48,16 @@ module Api
                 render json: @total_amount, status: 200
             end
 
+            def completed_jobwork
+                completed_jobwork = Jobinfo.completed_jobwork
+                render json: completed_jobwork, status: 201
+            end
+
             private
 
             def params_jobinfo
                 params.require(:jobinfo).permit(:client_name, 
+                                                :client_id,
                                                 :division_name, 
                                                 :block, 
                                                 :address, 

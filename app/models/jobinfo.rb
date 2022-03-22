@@ -19,6 +19,11 @@ def self.outstanding
   ActiveRecord::Base.connection.execute(sql)
 end
 
+def self.completed_jobwork
+  sql = "SELECT * from jobinfos where status = 1"
+  ActiveRecord::Base.connection.execute(sql)
+end
+
 
 end
   
