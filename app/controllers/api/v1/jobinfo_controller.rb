@@ -15,9 +15,10 @@ module Api
             @job = Jobinfo.find(params[:id]) 
             render json: @job , status: 201 
         end
-            def new
+           
+        def new
                 @jobinfo = Jobinfo.new
-            end
+     end
 
             def create
                 jobinfo = Jobinfo.create(params_jobinfo)

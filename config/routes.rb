@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do 
-      post 'auth_user', to: 'authentications#authenticate_user'
       resources :client
       resources :division
+      resources :users
+      post 'auth_user', to: 'authentications#authenticate_user'
       get "/divbelong/:id", to: "division#divbelong"
       resources :jobinfo
       get "totalamount", to: "jobinfo#total_amount"

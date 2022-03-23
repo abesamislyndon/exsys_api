@@ -3,9 +3,16 @@ class DefectDetailSerializer < ActiveModel::Serializer
 
 
   def photo
-     d = "asd"
-    #return url_for(object.photo) if object.photo.attached?
-    return rails_blob_path(object.photo, only_path: true) if object.photo.attached?
+    return unless object.photo.attached?
+
+    object.photo.blob.attributes
+          .slice('filename', 'byte_size')
+          .merge(url: image_url)
+          .tap { |attrs| attrs['name'] = attrs.delete('filename') }
+  end
+
+  def image_url
+    url_for(object.photo)
   end
 
 end

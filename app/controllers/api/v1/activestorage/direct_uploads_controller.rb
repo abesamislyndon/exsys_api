@@ -2,7 +2,6 @@ class Api::V1::Activestorage::DirectUploadsController < ActiveStorage::DirectUpl
   # before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
   
-    
     def create
       blob = ActiveStorage::Blob.create_before_direct_upload!(**blob_args)
       render json: direct_upload_json(blob)
@@ -19,7 +18,4 @@ class Api::V1::Activestorage::DirectUploadsController < ActiveStorage::DirectUpl
           headers: blob.service_headers_for_direct_upload
         })
       end
-
-
-
 end     
