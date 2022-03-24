@@ -14,8 +14,8 @@ class JobinfoSerializer < ActiveModel::Serializer
               #:partsreplaces
               :partsreplaces
 
-              def defects
-                ActiveModel::SerializableResource.new(object.defect_details,  each_serializer: DefectDetailSerializer)
+              def defect_details
+                ActiveModel::SerializableResource.new(object.defect_details,  each_serializer: DefectDetailsSerializer)
               end
 
               def partsreplaces
