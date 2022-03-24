@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :client
       resources :division
       resources :users
+      resources :partsreplace
       post 'auth_user', to: 'authentications#authenticate_user'
       get "/divbelong/:id", to: "division#divbelong"
       resources :jobinfo

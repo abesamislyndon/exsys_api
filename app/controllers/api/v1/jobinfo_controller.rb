@@ -44,6 +44,13 @@ module Api
                  end                 
             end
 
+            def destroy
+                @jobinfo = Jobinfo.find(params[:id])
+                @jobinfo.destroy
+                render json: @jobinfo, status: 204
+            end
+
+
             def total_amount 
                 @total_amount = Jobinfo.total_amount
                 render json: @total_amount, status: 200
