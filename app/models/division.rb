@@ -7,7 +7,7 @@ class Division < ApplicationRecord
             divisions.id, div_name, client_id
             from  divisions
             JOIN clients ON clients.id = divisions.client_id
-            where clients.id = #{id}"
+            where clients.client_name  = '#{id}'"
    result =  ActiveRecord::Base.connection.exec_query(sql)
   end
 end

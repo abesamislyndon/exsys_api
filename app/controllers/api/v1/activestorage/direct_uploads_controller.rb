@@ -4,6 +4,13 @@ class Api::V1::Activestorage::DirectUploadsController < ActiveStorage::DirectUpl
   
     def create
       blob = ActiveStorage::Blob.create_before_direct_upload!(**blob_args)
+    #        ActiveStorage::Attachment.create_or_find_by!(
+     #        name: 'file',
+    #         record_type: 'DefectDetail',
+    #       record_id: blob.id,
+   #       blob_id: blob.id
+   # )
+
       render json: direct_upload_json(blob)
     end
   

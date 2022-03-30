@@ -8,7 +8,7 @@ class Api::V1::UsersController  <  Api::ApplicationController
     end
   
     def create
-        newuser = User.create(user_param)
+        newuser = User.create(user_params)
         if  newuser.save
           render json: newuser, status: 201
         else
@@ -59,7 +59,7 @@ class Api::V1::UsersController  <  Api::ApplicationController
     end
   
     def user_params
-      params.require(:user).permit(:password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :role, :password, :password_confirmation)
     end
   end
   

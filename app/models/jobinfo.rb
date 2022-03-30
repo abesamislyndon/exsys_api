@@ -7,8 +7,6 @@ class Jobinfo < ApplicationRecord
   accepts_nested_attributes_for :partsreplaces, allow_destroy: true,   reject_if: :all_blank 
   validates_presence_of  :client_name, :division_name, :block, :address, :natureofcomplain, :dateEntry, :gtotal
 
-
-
 def self.total_amount
   sql = "SELECT sum(gtotal) as total_amount ,  count(*) as total_outstanding from jobinfos where status = 0"
   ActiveRecord::Base.connection.execute(sql)
