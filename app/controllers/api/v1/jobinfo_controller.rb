@@ -3,7 +3,6 @@ module Api
         class JobinfoController < Api::ApplicationController
          
         before_action :authenticate_request!
-            
         
          def index       
             @alljobinfo = Jobinfo.outstanding
@@ -12,7 +11,7 @@ module Api
 
 
          def show
-            @job = Jobinfo.find(params[:id]) 
+            @job = Jobinfo.find(params[:id])
             render json: @job , status: 201 
         end
            
@@ -22,9 +21,9 @@ module Api
 
             def create
                 jobinfo = Jobinfo.create(params_jobinfo)
+                #jobinfo.photo.attach(params[:photo])
                 #render json: @jobinfo, status: 201 if @jobinfo.save!
-                
-
+ 
                 if jobinfo.save
                     render json: jobinfo, status: 201
                   else
@@ -41,7 +40,7 @@ module Api
                 @jobinfo = Jobinfo.find(params[:id])
                   if @jobinfo.update!(params_jobinfo) 
                     render json: @jobinfo, status: 201 
-                 end                 
+              end                 
             end
 
             def destroy
@@ -64,7 +63,8 @@ module Api
             private
 
             def params_jobinfo
-                params.require(:jobinfo).permit(:client_name, 
+                params.require(:jobinfo).permit(:id,
+                                                :client_name, 
                                                 :client_id,
                                                 :division_name, 
                                                 :block, 
@@ -73,13 +73,14 @@ module Api
                                                 :dateEntry, 
                                                 :gtotal,
                                                 :status,
+                                                :photo,
                                                 :defect_details_attributes => 
                                                         [:id, 
                                                         :jobinfo_id, 
                                                         :defects, 
-                                                        :recommendation, 
-                                                        :photo],
-                                                partsreplaces_attributes: [:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
+                                                        :recommendation,
+                                                        :photo_url],
+                                                :partsreplaces_attributes=>[:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
                 )
             end
        

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get "completed", to: "jobinfo#completed_jobwork"
       #resources :direct_uploads, only: [:create]
       post '/rails/active_storage/direct_uploads', to: 'activestorage/direct_uploads#create'
-     # put '/rails/active_storage/disk/:encoded_token', to: 'activestorage/upload#update'
+      put '/rails/active_storage/disk/:encoded_token', to: 'activestorage/upload#update'
     end
   end  
 

@@ -7,11 +7,11 @@ class User < ApplicationRecord
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username, :username, :role
-  enum role: [:personnel, :admin, :superadmin]
+  enum role: [:personnel, :admin, :superadmin, :towncouncil, :contractor]
   
   attr_writer :login
 
-  def logi
+  def login
     @login || self.username || self.email
   end
 
@@ -29,5 +29,6 @@ class User < ApplicationRecord
     errors.add(:username, :invalid)
    end
  end
+
 
 end

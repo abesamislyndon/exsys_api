@@ -13,10 +13,11 @@ gem 'devise'
 gem 'jwt'
 gem 'rack-cors'
 #gem 'activestorage'
-gem 'active_storage_db'
+#gem 'active_storage_db'
 gem "image_processing", ">= 1.2"
 gem 'active_model_serializers'
-gem 'active_storage_base64'
+#gem 'active_storage_base64'
+
 
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

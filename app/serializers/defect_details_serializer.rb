@@ -1,26 +1,16 @@
 class DefectDetailsSerializer < ActiveModel::Serializer
-  attributes :id, :uid, :defects, :recommendation, :photo
-
+  include Rails.application.routes.url_helpers
+  attributes :id, :uid, :defects, :recommendation, :photo_url
   def uid
     object.id
   end
 
-  def photo
-    rails_blob_path(object.photo, only_path: true) if object.photo.attached?
+  
+
+  def photo_url
+    if object.photo.present?
+      rails_blob_path(object.photo, only_path: true)
+    end
   end
-
-  #def photo
-  #  return unless object.photo.attached?
-
-   # object.photo.blob.attributes
-   #       .slice('filename', 'byte_size')
-   #       .merge(url: image_url)
-   #       .tap { |attrs| attrs['name'] = attrs.delete('filename') }
-   #end
-
-  #def image_url
-  ##  url_for(object.photo)
-  #end
-
 
 end

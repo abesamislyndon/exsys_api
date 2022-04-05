@@ -1,5 +1,6 @@
 class JobinfoSerializer < ActiveModel::Serializer
-  attributes  :id , 
+  include Rails.application.routes.url_helpers
+  attributes  :id, 
               :client_name,
               :client_id,
               :division_name,
@@ -9,17 +10,24 @@ class JobinfoSerializer < ActiveModel::Serializer
               :address,
               :gtotal,
               :status,
+              :photo_url,
               :defect_details,
               #:defects,
               #:partsreplaces
               :partsreplaces
 
               def defect_details
-                ActiveModel::SerializableResource.new(object.defect_details,  each_serializer: DefectDetailsSerializer)
+                ActiveModelSerializers::SerializableResource.new(object.defect_details,  each_serializer: DefectDetailsSerializer)
               end
 
               def partsreplaces
-                ActiveModel::SerializableResource.new(object.partsreplaces,  each_serializer: PartsreplacesSerializer)
+                ActiveModelSerializers::SerializableResource.new(object.partsreplaces,  each_serializer: PartsreplacesSerializer)
               end
             
+              def photo_url
+                if object.photo.present?
+                  rails_blob_path(object.photo, only_path: true)
+                end
+              end
+
 end

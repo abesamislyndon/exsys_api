@@ -1,7 +1,7 @@
-class DefectDetail < ApplicationRecord
-    belongs_to :jobinfo 
+class DefectDetail < ApplicationRecord  
+    
     has_one_attached :photo 
-    delegate_missing_to :photo
+    belongs_to :jobinfo 
     validates_presence_of  :defects, :recommendation
 end
 
