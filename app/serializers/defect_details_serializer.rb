@@ -5,11 +5,9 @@ class DefectDetailsSerializer < ActiveModel::Serializer
     object.id
   end
 
-  
-
   def photo_url
-    if object.photo.present?
-      rails_blob_path(object.photo, only_path: true)
+    if object.defectphoto.present?
+      rails_blob_path(object.defectphoto, only_path: true)
     end
   end
 

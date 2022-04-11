@@ -7,7 +7,7 @@
 
 job = Jobinfo.create(
         client_name: "Bishan-Toa Payoh",
-        client_id: null,
+        client_id: 1,
         division_name: "Block 12",
         block: "asd",
         dateEntry: "30-03-2022",
@@ -15,5 +15,10 @@ job = Jobinfo.create(
         address: "asd",
         gtotal: "9.0",
         status: 0
-    
     )
+   job.photo.attach(
+            io: File.open('./public/images/giky.png'),
+            filename: 'giky.png',
+            content_type: 'application/png'
+
+   ) 

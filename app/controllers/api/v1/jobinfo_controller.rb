@@ -14,22 +14,19 @@ module Api
             @job = Jobinfo.find(params[:id])
             render json: @job , status: 201 
         end
-           
-        def new
-                @jobinfo = Jobinfo.new
-     end
-
-            def create
+        #
+       def create
                 jobinfo = Jobinfo.create(params_jobinfo)
+            
                 #jobinfo.photo.attach(params[:photo])
                 #render json: @jobinfo, status: 201 if @jobinfo.save!
- 
+            
                 if jobinfo.save
                     render json: jobinfo, status: 201
                   else
                     render json: jobinfo, status: :unprocessable_entity
                   end
-            end
+       end
 
             def edit
                 @jobinfo = Jobinfo.find(params[:id])
@@ -37,10 +34,12 @@ module Api
             
             # PUT method for updating in database a product based on id
             def update
-                @jobinfo = Jobinfo.find(params[:id])
-                  if @jobinfo.update!(params_jobinfo) 
-                    render json: @jobinfo, status: 201 
-              end                 
+                  jobinfo = Jobinfo.find(params[:id])
+                  jobinfo.update(photo: params[:photo])
+                  photo_url = rails_blob_path(jobinfo.photo)
+                # if jobinfo.update!(params_jobinfo) 
+                     render json: jobinfo,  photo_url: photo_url, status: 201 
+             # end                 
             end
 
             def destroy
@@ -79,7 +78,7 @@ module Api
                                                         :jobinfo_id, 
                                                         :defects, 
                                                         :recommendation,
-                                                        :photo_url],
+                                                        defectphoto:{}],
                                                 :partsreplaces_attributes=>[:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
                 )
             end

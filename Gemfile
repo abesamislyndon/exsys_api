@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.9'
 
 gem 'rails', '~> 6.0.4', '>= 6.0.4.4'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -14,7 +14,7 @@ gem 'jwt'
 gem 'rack-cors'
 #gem 'activestorage'
 #gem 'active_storage_db'
-gem "image_processing", ">= 1.2"
+#gem "image_processing", ">= 1.2"
 gem 'active_model_serializers'
 #gem 'active_storage_base64'
 
