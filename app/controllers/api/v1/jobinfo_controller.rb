@@ -16,11 +16,7 @@ module Api
         end
         #
        def create
-                jobinfo = Jobinfo.create(params_jobinfo)
-            
-                #jobinfo.photo.attach(params[:photo])
-                #render json: @jobinfo, status: 201 if @jobinfo.save!
-            
+                jobinfo = Jobinfo.create(params_jobinfo) 
                 if jobinfo.save
                     render json: jobinfo, status: 201
                   else
@@ -35,11 +31,11 @@ module Api
             # PUT method for updating in database a product based on id
             def update
                   jobinfo = Jobinfo.find(params[:id])
-                  jobinfo.update(photo: params[:photo])
-                  photo_url = rails_blob_path(jobinfo.photo)
-                # if jobinfo.update!(params_jobinfo) 
-                     render json: jobinfo,  photo_url: photo_url, status: 201 
-             # end                 
+                  #jobinfo.update(photo: params[:photo])
+                  #photo_url = rails_blob_path(jobinfo.photo)
+                 if jobinfo.update!(params_jobinfo) 
+                     render json: jobinfo,  status: 201 
+                 end                 
             end
 
             def destroy
@@ -57,6 +53,12 @@ module Api
             def completed_jobwork
                 completed_jobwork = Jobinfo.completed_jobwork
                 render json: completed_jobwork, status: 201
+            end
+
+
+            def monthly_total_outstanding_chart
+               outstanding_monthly_client = Jobinfo.outstandingchart
+               render json: outstanding_monthly_client
             end
 
             private
@@ -77,8 +79,7 @@ module Api
                                                         [:id, 
                                                         :jobinfo_id, 
                                                         :defects, 
-                                                        :recommendation,
-                                                        defectphoto:{}],
+                                                        :recommendation],
                                                 :partsreplaces_attributes=>[:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
                 )
             end

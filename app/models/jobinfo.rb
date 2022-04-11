@@ -24,6 +24,16 @@ def self.completed_jobwork
   ActiveRecord::Base.connection.execute(sql)
 end
 
+def self.outstandingchart
+  sql = "
+  SELECT   client_name, SUM(gtotal) as total
+  FROM jobinfos
+  WHERE status = 0
+  GROUP BY  DATE(created_at), client_name
+"
+result =  ActiveRecord::Base.connection.exec_query(sql)
+end
+
 
 end
   
