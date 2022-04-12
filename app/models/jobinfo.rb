@@ -26,7 +26,7 @@ end
 
 def self.outstandingchart
   sql = "
-  SELECT   client_name, SUM(gtotal) as total
+  SELECT   client_name, SUM(gtotal)
   FROM jobinfos
   WHERE status = 0
   GROUP BY  DATE(created_at), client_name

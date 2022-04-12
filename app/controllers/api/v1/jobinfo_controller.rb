@@ -57,7 +57,7 @@ module Api
 
 
             def monthly_total_outstanding_chart
-               outstanding_monthly_client = Jobinfo.outstandingchart
+               outstanding_monthly_client = Jobinfo.outstandingchart.map(&:values)
                render json: outstanding_monthly_client
             end
 
