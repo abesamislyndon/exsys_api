@@ -61,6 +61,11 @@ module Api
                render json: outstanding_monthly_client
             end
 
+            def monthly_total_outstanding_chart_count
+                outstanding_monthly_client_count = Jobinfo.outstandingchartcount.map(&:values)
+                render json: outstanding_monthly_client_count
+             end
+
             private
 
             def params_jobinfo

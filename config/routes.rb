@@ -22,6 +22,7 @@ Rails.application.routes.draw do
      
       #chart
       get "/outstanding/", to: "jobinfo#monthly_total_outstanding_chart"
+      get "/outstandingcount/", to: "jobinfo#monthly_total_outstanding_chart_count"
     end
   end  
 

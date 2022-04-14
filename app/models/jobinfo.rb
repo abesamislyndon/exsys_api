@@ -29,7 +29,17 @@ def self.outstandingchart
   SELECT   client_name, SUM(gtotal)
   FROM jobinfos
   WHERE status = 0
-  GROUP BY  DATE(created_at), client_name
+  GROUP BY client_name
+"
+result =  ActiveRecord::Base.connection.exec_query(sql)
+end
+
+def self.outstandingchartcount
+  sql = "
+  SELECT   client_name, COUNT(*) 
+  FROM jobinfos
+  WHERE status = 0
+  GROUP BY   client_name
 "
 result =  ActiveRecord::Base.connection.exec_query(sql)
 end
