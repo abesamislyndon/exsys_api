@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :jobinfo
       get "totalamount", to: "jobinfo#total_amount"
       get "completed", to: "jobinfo#completed_jobwork"
+      get "personnelcompleted", to: "jobinfo#completed_jobwork_personnel"
+      get "personneloutstanding", to: "jobinfo#outstanding_jobwork_personnel"
       #resources :direct_uploads, only: [:create]
       post '/rails/active_storage/direct_uploads', to: 'activestorage/direct_uploads#create'
       post '/upload', to: 'upload#create'

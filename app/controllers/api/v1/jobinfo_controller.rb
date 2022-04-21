@@ -55,6 +55,19 @@ module Api
                 render json: completed_jobwork, status: 201
             end
 
+            def completed_jobwork_personnel
+                userid = current_user.id
+                completed_jobwork_personnel = Jobinfo.completed_jobwork_personnel(userid)
+                render json: completed_jobwork_personnel, status: 201
+            end
+
+
+            def outstanding_jobwork_personnel
+                userid = current_user.id
+                outstanding_jobwork_personnel = Jobinfo.outstanding_jobwork_personnel(userid)
+                render json: outstanding_jobwork_personnel, status: 201
+            end
+
 
             def monthly_total_outstanding_chart
                outstanding_monthly_client = Jobinfo.outstandingchart.map(&:values)
@@ -69,7 +82,7 @@ module Api
             private
 
             def params_jobinfo
-                params.require(:jobinfo).permit(:id,
+                params.require(:jobinfo).permit(:id,    
                                                 :client_name, 
                                                 :client_id,
                                                 :division_name, 
@@ -79,6 +92,7 @@ module Api
                                                 :dateEntry, 
                                                 :gtotal,
                                                 :status,
+                                                :userid,
                                                 :photo,
                                                 :defect_details_attributes => 
                                                         [:id, 

@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 202203131508274) do
     t.decimal "gtotal", precision: 10, scale: 2
     t.string "client_id"
     t.integer "status"
+    t.integer "Userid"
   end
 
   create_table "partsreplaces", force: :cascade do |t|

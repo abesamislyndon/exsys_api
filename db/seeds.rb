@@ -3,7 +3,7 @@
 #end
 
 
-#dondon = User.create(username: 'dondon', email: 'abesamislyndon@gmail.com', password: 'dondon', password_confirmation: 'dondon', role: 1)
+dondon = User.create(username: 'dondon', email: 'abesamislyndon@gmail.com', password: 'dondon', password_confirmation: 'dondon', role: 1)
 
 job = Jobinfo.create(
         client_name: "Bishan-Toa Payoh",

@@ -1,5 +1,4 @@
 class Api::V1::UploadController   < ActiveStorage::DirectUploadsController
-  
    skip_before_action :verify_authenticity_token
   #
  def create
@@ -9,7 +8,7 @@ class Api::V1::UploadController   < ActiveStorage::DirectUploadsController
 
 
   def attached_create
-    ActiveStorage::Attachment.create(params_at)
+   img =  ActiveStorage::Attachment.create(params_at)
   end
 
   private

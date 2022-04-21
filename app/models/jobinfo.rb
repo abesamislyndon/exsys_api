@@ -45,5 +45,15 @@ result =  ActiveRecord::Base.connection.exec_query(sql)
 end
 
 
+def self.completed_jobwork_personnel(userid)
+  sql = "SELECT * from jobinfos where status = 1 and userid = #{userid} "
+  ActiveRecord::Base.connection.execute(sql)
+end
+
+def self.outstanding_jobwork_personnel(userid)
+  sql = "SELECT * from jobinfos where status = 0 and userid = #{userid} "
+  ActiveRecord::Base.connection.execute(sql)
+end
+
 end
   
