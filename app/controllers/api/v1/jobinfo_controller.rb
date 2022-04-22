@@ -68,6 +68,17 @@ module Api
                 render json: outstanding_jobwork_personnel, status: 201
             end
 
+            def total_count_personnel_outstanding 
+                userid = current_user.id
+                @total_count_personnel_outstanding = Jobinfo.total_count_personnel_outstanding(userid)
+                render json: @total_count_personnel_outstanding, status: 200
+            end
+
+            def total_count_personnel_done
+                userid = current_user.id
+                @total_count_personnel_done = Jobinfo.total_count_personnel_done(userid)
+                render json: @total_count_personnel_done, status: 200
+            end
 
             def monthly_total_outstanding_chart
                outstanding_monthly_client = Jobinfo.outstandingchart.map(&:values)
@@ -77,7 +88,7 @@ module Api
             def monthly_total_outstanding_chart_count
                 outstanding_monthly_client_count = Jobinfo.outstandingchartcount.map(&:values)
                 render json: outstanding_monthly_client_count
-             end
+            end
 
             private
 

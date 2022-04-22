@@ -55,5 +55,23 @@ def self.outstanding_jobwork_personnel(userid)
   ActiveRecord::Base.connection.execute(sql)
 end
 
+def self.total_count_personnel_outstanding(userid)
+  sql = "
+  SELECT COUNT(*) 
+  FROM jobinfos
+  WHERE status = 0
+  and userid = #{userid}  "
+  ActiveRecord::Base.connection.execute(sql)
+end
+
+def self.total_count_personnel_done(userid)
+  sql = "
+  SELECT COUNT(*) 
+  FROM jobinfos
+  WHERE status = 1
+  and userid = #{userid}  "
+  ActiveRecord::Base.connection.execute(sql)
+end
+
 end
   

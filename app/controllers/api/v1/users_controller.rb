@@ -12,7 +12,7 @@ class Api::V1::UsersController  <  Api::ApplicationController
         if  newuser.save
           render json: newuser, status: 201
         else
-          render  json: newuser, status: :unprocessable_entity 
+          render json: { status: 500, errors: newuser.errors }
         end
     end
   
@@ -31,7 +31,7 @@ class Api::V1::UsersController  <  Api::ApplicationController
   
     def update
       userupdate = User.find(params[:id])
-        if userupdate.update!(user_param) 
+        if userupdate.update!(user_params) 
           render json: userupdate, status: 201 
        end                 
   end
