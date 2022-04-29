@@ -6,7 +6,7 @@ class Jobinfo < ApplicationRecord
  # has_many :partsreplaces,   dependent: :destroy
   accepts_nested_attributes_for :defect_details, allow_destroy: true ,  reject_if: :all_blank
   accepts_nested_attributes_for :partsreplaces, allow_destroy: true,   reject_if: :all_blank 
-  validates_presence_of  :client_name, :division_name, :block, :address, :natureofcomplain, :dateEntry, :gtotal
+  validates_presence_of  :client_name, :division_name, :block, :address, :natureofcomplain, :dateentry, :gtotal
  
 
 def self.total_amount
@@ -71,6 +71,13 @@ def self.total_count_personnel_done(userid)
   WHERE status = 1
   and userid = #{userid}  "
   ActiveRecord::Base.connection.execute(sql)
+end
+
+def self.generatereport(client_name, status, datefrom, dateto)
+  sql = "SELECT dateentry as date , client_name as client, division_name as division, address, natureofcomplain as complain, gtotal as total 
+  from  jobinfos
+  WHERE dateentry  BETWEEN '#{datefrom}' AND  '#{dateto}' AND client_name = '#{client_name}' AND status = '#{status}'  "
+  result =  ActiveRecord::Base.connection.exec_query(sql)
 end
 
 end

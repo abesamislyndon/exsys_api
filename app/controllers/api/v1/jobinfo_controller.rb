@@ -90,6 +90,15 @@ module Api
                 render json: outstanding_monthly_client_count
             end
 
+            def generatereport
+               client_name =  params[:client_name]
+               status = params[:status]
+               datefrom = params[:datefrom] 
+               dateto = params[:dateto]
+                @generatereport = Jobinfo.generatereport(client_name, status, datefrom, dateto)
+                render json: @generatereport, status: 200
+            end
+
             private
 
             def params_jobinfo
@@ -100,7 +109,7 @@ module Api
                                                 :block, 
                                                 :address, 
                                                 :natureofcomplain, 
-                                                :dateEntry, 
+                                                :dateentry, 
                                                 :gtotal,
                                                 :status,
                                                 :userid,
@@ -113,6 +122,8 @@ module Api
                                                 :partsreplaces_attributes=>[:id, :jobinfo_id, :sorcode, :quantity, :item, :rates, :subtotal,:_destroy]
                 )
             end
+
+          
        
         end    
     end

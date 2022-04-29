@@ -23,7 +23,10 @@ Rails.application.routes.draw do
       post '/upload', to: 'upload#create'
       post '/upload_attach', to: 'upload#attached_create'
       put '/rails/active_storage/disk/:encoded_token', to: 'activestorage/upload#update'
-     
+
+      #resources : Report
+      get "generatereport", to: "jobinfo#generatereport"
+
       #chart
       get "/outstanding/", to: "jobinfo#monthly_total_outstanding_chart"
       get "/outstandingcount/", to: "jobinfo#monthly_total_outstanding_chart_count"

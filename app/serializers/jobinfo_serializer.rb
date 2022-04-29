@@ -5,7 +5,7 @@ class JobinfoSerializer < ActiveModel::Serializer
               :client_id,
               :division_name,
               :block, 
-              :dateEntry, 
+              :dateentry, 
               :natureofcomplain,
               :address,
               :gtotal,
