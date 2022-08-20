@@ -7,7 +7,7 @@ RSpec.describe Jobinfo, type: :model do
   end
 
   context "validations" do
-    [:client_name, :division_name, :gtotal,  :block, :dateEntry, :natureofcomplain, :address].each do |jobinfo| 
+    [:client_name, :division_name, :gtotal,  :block, :dateentry, :natureofcomplain, :address].each do |jobinfo| 
       it { should validate_presence_of(jobinfo)}
     end
   end
@@ -18,7 +18,7 @@ RSpec.describe Jobinfo, type: :model do
       end
 
       it 'check jobinfo can be update' do
-        [:client_name=>"cdo", :division_name=>"bayabas", :block=>"12", :dateEntry=>"12-12-22", :natureofcomplain=>"learning", :address=>"adelaida"].each do |jobinfo|  
+        [:client_name=>"cdo", :division_name=>"bayabas", :block=>"12", :dateentry=>"12-12-22", :natureofcomplain=>"learning", :address=>"adelaida"].each do |jobinfo|  
           @jobinfo.update(jobinfo)
           expect(Jobinfo.find_by_client_name('cdo')).to eq(@jobinfo)
         end

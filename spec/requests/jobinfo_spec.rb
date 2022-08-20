@@ -23,7 +23,8 @@ context "CRUD process" do
         headers = { 'ACCEPT'=>'application/json'}
         post '/api/v1/jobinfo', 
         :params => {:jobinfo=>
-                    {dateEntry: "12-12-22", 
+                    {  
+                         dateEntry: "12-12-2022", 
                          client_name: 'SAMPLE', 
                          division_name: "CDO",
                           block: "12", 
