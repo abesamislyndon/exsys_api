@@ -6,7 +6,7 @@ class Jobinfo < ApplicationRecord
  # has_many :partsreplaces,   dependent: :destroy
   accepts_nested_attributes_for :defect_details, allow_destroy: true ,  reject_if: :all_blank
   accepts_nested_attributes_for :partsreplaces, allow_destroy: true,   reject_if: :all_blank 
-  validates_presence_of  :client_name, :division_name, :block, :address, :natureofcomplain, :dateentry, :gtotal
+  validates_presence_of  :client_name, :division_name, :block, :address, :natureofcomplain, :dateentry
  
 
 def self.total_amount
